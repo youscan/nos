@@ -19,6 +19,9 @@ package mps_test
 import (
 	"context"
 	"fmt"
+	"testing"
+	"time"
+
 	"github.com/nebuly-ai/nos/internal/partitioning/mps"
 	"github.com/nebuly-ai/nos/internal/partitioning/state"
 	"github.com/nebuly-ai/nos/pkg/constant"
@@ -29,8 +32,6 @@ import (
 	"k8s.io/apimachinery/pkg/types"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/client/fake"
-	"testing"
-	"time"
 )
 
 func TestToPluginConfig(t *testing.T) {
@@ -76,7 +77,7 @@ func TestToPluginConfig(t *testing.T) {
 		}}
 		config, err := mps.ToPluginConfig(nodePartitioning)
 		assert.Error(t, err)
-		assert.Empty(t, config.Sharing.MPS.Resources)
+		assert.Empty(t, config.Sharing)
 	})
 }
 
