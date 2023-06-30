@@ -35,6 +35,10 @@ jobs:
 
       - name: Build Docker images
         run: make docker-build
+        env:
+          DOCKER_REGISTRY: ${{ env.REGISTRY }}/${{ github.repository_owner }}
 
       - name: Push Docker images
         run: make docker-push
+        env:
+          DOCKER_REGISTRY: ${{ env.REGISTRY }}/${{ github.repository_owner }}

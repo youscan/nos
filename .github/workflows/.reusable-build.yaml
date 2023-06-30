@@ -43,6 +43,10 @@ jobs:
 
       - name: Build Docker image
         run: make docker-build-${{ inputs.component-name }}
+        env:
+          DOCKER_REGISTRY: ${{ inputs.registry }}/${{ github.repository_owner }}
 
       - name: Push Docker image
         run: make docker-push-${{ inputs.component-name }}
+        env:
+          DOCKER_REGISTRY: ${{ inputs.registry }}/${{ github.repository_owner }}

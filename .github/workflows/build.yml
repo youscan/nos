@@ -121,3 +121,5 @@ jobs:
 
       - name: Helm push
         run: make helm-push
+        env:
+          HELM_CHART_REGISTRY: oci://${{ env.REGISTRY }}/${{ github.repository_owner }}/helm-charts
