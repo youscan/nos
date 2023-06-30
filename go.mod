@@ -29,7 +29,7 @@ require (
 )
 
 replace (
-	github.com/NVIDIA/k8s-device-plugin v0.13.0 => github.com/nebuly-ai/k8s-device-plugin v0.0.0-20230110115240-1a58f91878ce
+	github.com/NVIDIA/k8s-device-plugin v0.13.0 => github.com/youscan/k8s-device-plugin v0.0.0-20230630133351-a5163c63ee1e
 	// TODO: remove this replace when PR !22 that adds create methods will be merged into go-nvilib
 	gitlab.com/nvidia/cloud-native/go-nvlib => gitlab.com/Telemaco019/go-nvlib v0.0.0-20221108194233-54ab63a99eb3
 )

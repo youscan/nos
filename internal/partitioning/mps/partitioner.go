@@ -19,6 +19,10 @@ package mps
 import (
 	"context"
 	"fmt"
+	"strconv"
+	"strings"
+	"time"
+
 	nvidiav1 "github.com/NVIDIA/k8s-device-plugin/api/config/v1"
 	"github.com/nebuly-ai/nos/internal/partitioning/core"
 	"github.com/nebuly-ai/nos/internal/partitioning/state"
@@ -30,9 +34,6 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/yaml"
-	"strconv"
-	"strings"
-	"time"
 )
 
 const DevicePluginConfigKeyFormat = "%s-%s"
@@ -142,13 +143,13 @@ func ToPluginConfig(partitioning state.NodePartitioning) (nvidiav1.Config, error
 	}
 	return nvidiav1.Config{
 		Version: nvidiav1.Version,
-		Flags: nvidiav1.Flags{
+		Flags: &nvidiav1.Flags{
 			CommandLineFlags: nvidiav1.CommandLineFlags{
 				MigStrategy: util.StringAddr("none"),
 			},
 		},
-		Sharing: nvidiav1.Sharing{
-			MPS: nvidiav1.MPS{
+		Sharing: &nvidiav1.Sharing{
+			MPS: &nvidiav1.MPS{
 				Resources:                  replicatedResources,
 				FailRequestsGreaterThanOne: true,
 			},
